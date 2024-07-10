@@ -29,7 +29,6 @@ class RestaurantList(Resource):
         restaurants = Restaurant.query.all()
         return [restaurant.to_dict(only=("id", "name", "address")) for restaurant in restaurants], 200
 
-from sqlalchemy.orm import Session
 
 class RestaurantDetails(Resource):
     def get(self, id):
@@ -77,7 +76,6 @@ api.add_resource(RestaurantList, '/restaurants')
 api.add_resource(RestaurantDetails, '/restaurants/<int:id>')
 api.add_resource(PizzaList, '/pizzas')
 api.add_resource(RestaurantPizzaList, '/restaurant_pizzas')
-
+          
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
-    
